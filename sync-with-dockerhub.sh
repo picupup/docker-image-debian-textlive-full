@@ -8,9 +8,10 @@
 # set -n # Uncomment to check script syntax without execution
 
 # Docker hub user name, please change
-user=picupup
+user="${2:-picupup}"
 tag="${user}/debian-texlive-full"
-version="${tag}:v1.0"
+number="${1:?'Please insert version'}
+version="${tag}:${number}"
 
 docker build -t $tag .
 docker tag ${tag} ${version}
