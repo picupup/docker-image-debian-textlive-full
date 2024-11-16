@@ -36,4 +36,3 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/debian-texlive-full:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/debian-texlive-full:${{ github.ref_name }}
           outputs: ${{ github.event_name == 'pull_request' && 'type=cacheonly' || 'type=registry,push=true' }}
-

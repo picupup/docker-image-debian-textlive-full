@@ -15,6 +15,7 @@ RUN apt-get install -y vim
 RUN apt-get install -y git
 RUN apt-get install -y python3
 RUN apt-get install -y python3-venv
+RUN curl -L https://raw.githubusercontent.com/picupup/scripts/refs/heads/main/one-time-bin/install-texlive.sh | bash || exit 1
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
