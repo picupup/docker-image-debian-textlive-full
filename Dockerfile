@@ -5,19 +5,24 @@ FROM debian:11
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Update and install required packages
-RUN apt-get update
-RUN apt-get install -y curl
-RUN apt-get install -y perl-doc
-RUN curl -L https://raw.githubusercontent.com/picupup/scripts/refs/heads/main/one-time-bin/install-texlive.sh | bash -s -- -p '/usr/local/texlive' -f || exit 1
-RUN apt-get install -y pandoc
-RUN apt-get install -y pdftk
-RUN apt-get install -y grep
-RUN apt-get install -y vim
-RUN apt-get install -y git
-RUN apt-get install -y python3
-RUN apt-get install -y python3-venv
-
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y \
+        curl \
+        perl-doc \
+        pandoc \
+        pdftk \
+        grep \
+        vim \
+        git \
+        python3 \
+        python3-venv && \
+    curl -L https://raw.githubusercontent.com/picupup/scripts/refs/heads/main/one-time-bin/install-texlive.sh | bash -s -- -p '/usr/local/texlive' -f || exit 1 && \
+    rm -rf /usr/share/dotnet \
+           /opt/ghc \
+           "/usr/local/share/boost" \
+           "$AGENT_TOOLSDIRECTORY" \
+           /var/lib/apt/lists/* && \
+    apt-get clean
 
 # Set the default command to run when container starts
 CMD [ "bash" ]
