@@ -11,5 +11,7 @@ RUN rm -rf /usr/share/dotnet /opt/ghc "/usr/local/share/boost" "$AGENT_TOOLSDIRE
 RUN curl -L https://raw.githubusercontent.com/picupup/scripts/refs/heads/main/one-time-bin/install-texlive.sh | bash -s -- -p '/usr/local/texlive' -f || exit 1 && \
     rm -rf /usr/share/dotnet /opt/ghc "/usr/local/share/boost" "$AGENT_TOOLSDIRECTORY" /var/lib/apt/lists/* && apt-get clean
 
+ENV PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
+
 # Set the default command to run when container starts
 CMD [ "bash" ]

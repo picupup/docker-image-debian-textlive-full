@@ -10,7 +10,7 @@
 # Docker hub user name, please change
 user="${2:-picupup}"
 tag="${user}/debian-texlive-full"
-number="${1:?'Please insert version'}
+number="${1:?'Please insert version'}"
 version="${tag}:${number}"
 
 docker build -t $tag .
