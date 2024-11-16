@@ -7,6 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Update and install required packages
 RUN apt-get update
 RUN apt-get install -y curl
+RUN apt-get install -y perl-doc
 RUN curl -L https://raw.githubusercontent.com/picupup/scripts/refs/heads/main/one-time-bin/install-texlive.sh | bash -s -- '/usr/local/texlive' -f || exit 1
 RUN apt-get install -y pandoc
 RUN apt-get install -y pdftk
